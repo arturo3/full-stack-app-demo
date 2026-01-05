@@ -1,4 +1,4 @@
-namespace full_stack_app_demo.Server.Data.DTO.Requests;
+namespace full_stack_app_demo.Server.Controllers.Models.Requests;
 
 public class ProductCreateRequest
 {

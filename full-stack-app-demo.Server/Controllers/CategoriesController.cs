@@ -1,5 +1,5 @@
 using full_stack_app_demo.Server.Data.DTO;
-using full_stack_app_demo.Server.Data.DTO.Requests;
+using full_stack_app_demo.Server.Controllers.Models.Requests;
 using full_stack_app_demo.Server.Data.Repositories;
 using full_stack_app_demo.Server.Services;
 using Microsoft.AspNetCore.Mvc;
