@@ -1,0 +1,22 @@
+namespace full_stack_app_demo.Server.Controllers.Models.Requests;
+
+public class ProductFilterQuery
+{
+    public string? SearchTerm { get; set; }
+
+    public int? CategoryId { get; set; }
+
+    public decimal? MinPrice { get; set; }
+
+    public decimal? MaxPrice { get; set; }
+
+    public bool? InStock { get; set; }
+
+    public string? SortBy { get; set; }
+
+    public string? SortOrder { get; set; }
+
+    public int? PageNumber { get; set; }
+
+    public int? PageSize { get; set; }
+}

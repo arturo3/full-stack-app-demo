@@ -26,6 +26,13 @@ public class ProductsController : ControllerBase
         return Ok(products);
     }
 
+    [HttpGet("filtered")]
+    public async Task<ActionResult<List<ProductDto>>> GetAllFiltered([FromQuery] ProductFilterQuery query)
+    {
+        var products = await _productRepository.GetProductsByFilter(query);
+        return Ok(products);
+    }
+
     [HttpGet("{id:int}")]
     public async Task<ActionResult<ProductDto>> GetById(int id)
     {

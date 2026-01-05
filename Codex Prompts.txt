@@ -1,0 +1,91 @@
+First prompt: 
+
+Given the following schema add a data folder in my server project and add entities for the two tables. Implement the
+  repository pattern where dbContext is injected via a base repository. Use a connection to a sql server database. Add
+  a key-value pair for this connection string in appsettings. Create a DTO for each entity inside the data folder in a
+  DTO folder. Add an entity folder and a repository folder. Keep everything clean. The entities should have all the
+  columns in the schema. Create the relationships in EF for the given foreign keys.
+
+  CREATE TABLE dbo.Category(
+  Id INT NOT NULL IDENTITY(1,1) CONSTRAINT PK_Cateogory PRIMARY KEY,
+  [Name] NVARCHAR(250),
+  [Description] NVARCHAR(500),
+  IsActive BIT NOT NULL CONSTRAINT DF_Category_IsActive DEFAULT (0)
+  );
+  GO
+
+  CREATE TABLE dbo.Product(
+  Id INT IDENTITY(1,1) NOT NULL CONSTRAINT PK_Product PRIMARY KEY,
+  [Name] NVARCHAR(250) NOT NULL,
+  [Description] NVARCHAR(500) NULL,
+  Price DECIMAL(18,2) NOT NULL DEFAULT 0,
+  StockQuantity INT NOT NULL DEFAULT 0,
+  CreatedDate DATETIME2 NOT NULL CONSTRAINT DF_Product_CreatedAt DEFAULT (GETUTCDATE()),
+  IsActive BIT NOT NULL CONSTRAINT DF_Product_IsActive DEFAULT (0),
+  CategoryId INT NOT NULL CONSTRAINT FK_Product_Category REFERENCES dbo.Category (Id)
+  );
+  
+ Second prompt: 
+ 
+ Add a controller for the Product entity. It should have the following endpoints. Add response/request objects where applicable. Add a services folder in the
+  server project. Add a services file for each entity and service methods whenever a response/request object and entity is involved. i.e. update/delete
+  endpoints. It is okay for repositories to be injected into the controller if simple logic is required.
+
+   GET /api/products - All active products with category info
+   GET /api/products/{id} - Specific product (404 if not found or inactive)
+   POST /api/products - Create product
+   PUT /api/products/{id} - Update product (404 if not found or inactive)
+   DELETE /api/products/{id} - Soft delete (set IsActive = false)
+
+  Add a Category object to the ProductDTO. Use projections in the repository pattern to ensure the repository returns a DTO and not an Entity when performing
+  reads.
+  
+Third prompt: 
+
+Now do the same thing but add a Category controller implenting the following endpoints. Follow the same established patterns and approaches.
+
+  GET /api/categories - All active categories
+   POST /api/categories - Create category
+ 
+Fourth prompt: 
+
+ Add a middleware to handle unexpected errors in my controllers. Any unexpected error should handle a Problem object with an error message, an error id, stack trace (if in development envionment)
+ 
+Fifth prompt: 
+
+ In my Angular app, add a header component with a welcome message that says "Welcome RegScale". Place it in my app.component. Create another component called
+  navigation. Have two buttons: Products and Categories. Create a component for Products and one for Categories. Add the navigation component to my root
+  component below the header. Add two routes. One for the Product and Categories component. Each of the buttons in the navigation component will route to each
+  of the components.
+
+  The buttons should be flat style buttons with primary theme colors. Center them on the page using the complete width of the viewport.
+  
+Sixth prompt: 
+In my Angular app, add a header component with a welcome message that says "Welcome RegScale". Place it in my app.component. Create another component called
+  navigation. Have two buttons: Products and Categories. Create a component for Products and one for Categories. Add the navigation component to my root
+  component below the header. Add two routes. One for the Product and Categories component. Each of the buttons in the navigation component will route to each
+  of the components.
+
+  The buttons should be flat style buttons with primary theme colors. Center them on the page using the complete width of the viewport.
+
+Seventh Prompt: 
+
+ In the products controller, add a button that says "Load Products". Call the "api/products" endpoint (GetAll) and display the collection of products in a mat-
+  table component. Before the table is loaded, show a "No Products Loaded" h1 element below the "Load Products" button. When the user clicks the "Load Products"
+  button show a "Loading..." text. Once the products are loaded, display the mat table. Use *ngIf to control the display of the three different states.
+
+  Add an Angular service calle products.service in a services folder in my Angular app that encapsulates calling the api. Use the Angular httpclient. Add an
+  IProduct interface and ICategory interface in a models folder inside my Angular app to use when serializing the results of the API.
+
+  If there is an error when calling the endpoint, add an error state in the products component stating that "something went wrong while loading products..."
+  
+Eight Prompt: 
+
+Add another button to my navigation component. Call it Products With ngFor. Add another component called productsTwo where it's a copy of the products
+  component, but instead of using a mat-table, use an ngFor repeating a div with the properties displayed in the table.
+  
+Ninth Prompt:
+
+Add a GetAllFiltered endpoint that accepts the following query paramters. Create an object to encapsulate the query parameters. Any of the query params can be
+  null.  Add a method in my repository called GetProductsByFilter where the query params object is received. The repository method ends up calling a SPROC
+  called "dbo.GetProductsByFilterPaginated". Do not implement the procedure. Wire everything else up. There should be no changes made to my entities.
