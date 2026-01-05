@@ -1,9 +1,7 @@
-namespace full_stack_app_demo.Server.Data.DTO;
+namespace full_stack_app_demo.Server.Data.DTO.Requests;
 
-public class ProductDto
+public class ProductUpdateRequest
 {
-    public int Id { get; set; }
-
     public string Name { get; set; } = string.Empty;
 
     public string? Description { get; set; }
@@ -12,11 +10,7 @@ public class ProductDto
 
     public int StockQuantity { get; set; }
 
-    public DateTime CreatedDate { get; set; }
-
     public bool IsActive { get; set; }
 
     public int CategoryId { get; set; }
-
-    public CategoryDto? Category { get; set; }
 }

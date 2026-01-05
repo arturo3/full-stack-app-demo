@@ -12,6 +12,8 @@ builder.Services.AddDbContext<full_stack_app_demo.Server.Data.AppDbContext>(opti
 
 builder.Services.AddScoped<full_stack_app_demo.Server.Data.Repositories.ICategoryRepository, full_stack_app_demo.Server.Data.Repositories.CategoryRepository>();
 builder.Services.AddScoped<full_stack_app_demo.Server.Data.Repositories.IProductRepository, full_stack_app_demo.Server.Data.Repositories.ProductRepository>();
+builder.Services.AddScoped<full_stack_app_demo.Server.Services.ICategoryService, full_stack_app_demo.Server.Services.CategoryService>();
+builder.Services.AddScoped<full_stack_app_demo.Server.Services.IProductService, full_stack_app_demo.Server.Services.ProductService>();
 #endregion
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
