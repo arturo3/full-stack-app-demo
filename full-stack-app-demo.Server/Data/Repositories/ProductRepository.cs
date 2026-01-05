@@ -70,6 +70,7 @@ public class ProductRepository : BaseRepository<Product>, IProductRepository
     public Task<Product?> GetActiveEntityByIdAsync(int id)
     {
         return Context.Products
+            .AsNoTracking()
             .FirstOrDefaultAsync(product => product.IsActive && product.Id == id);
     }
 }

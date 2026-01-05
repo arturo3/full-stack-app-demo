@@ -30,6 +30,7 @@ public class ProductsController : ControllerBase
     public async Task<ActionResult<ProductDto>> GetById(int id)
     {
         var product = await _productRepository.GetActiveProductByIdAsync(id);
+
         if (product is null)
         {
             return NotFound();
@@ -42,6 +43,7 @@ public class ProductsController : ControllerBase
     public async Task<ActionResult<ProductDto>> Create([FromBody] ProductCreateRequest request)
     {
         var created = await _productService.CreateAsync(request);
+
         if (created is null)
         {
             return BadRequest();
@@ -54,6 +56,7 @@ public class ProductsController : ControllerBase
     public async Task<ActionResult<ProductDto>> Update(int id, [FromBody] ProductUpdateRequest request)
     {
         var updated = await _productService.UpdateAsync(id, request);
+
         if (updated is null)
         {
             return NotFound();
@@ -66,11 +69,12 @@ public class ProductsController : ControllerBase
     public async Task<IActionResult> SoftDelete(int id)
     {
         var deleted = await _productService.SoftDeleteAsync(id);
+
         if (!deleted)
         {
             return NotFound();
         }
 
-        return NoContent();
+        return NoContent(); // Should return 200?
     }
 }
