@@ -22,6 +22,8 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+app.UseMiddleware<full_stack_app_demo.Server.Middleware.ExceptionHandlingMiddleware>();
+
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
