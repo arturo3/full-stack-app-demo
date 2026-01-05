@@ -4,7 +4,7 @@ I did use AI heavily to quickly create this app. I've attached the prompts I use
 the AI build what I want. 
 
 # Quick Start
-## Prerequisits
+## Prerequisites
 SQL Server 
 .NET 8
 Entity Framework
