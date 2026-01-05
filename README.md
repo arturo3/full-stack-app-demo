@@ -73,6 +73,17 @@ leads to clean and deliberate code.
 ## Index strategy
 Index strategy is simple because of the lack of real world scenarios. The indexes should leverage the filters that are highly used. 
 
+Indexes are lookup tables that are meant for fast retrieval and can prevent hitting the actual table to fulfill queries. Given that
+logic I assumed that users would be filtering by categoryId, price and sorting by createdDate as people usually want to see newer (more relevant)
+data. This also helps with pagination as our the first page will more than likely be recent products. 
+
+The indexes reflect this and they include the columns that are going to be used in the filtering/ final select clause. 
+
+There's room for improvement in the query and indexing strategy. The SPROC does two selects right now but we can get away with 
+making just one select. 
+
+The indexes include [Description] which is a large column (NVARCHAR(500)). There is probably a better way to implement this.
+
 # What i would Do with More Time
 
 ## Unimplemented features and approach
@@ -96,4 +107,4 @@ rows. Maybe side partitioning would be a good strategy at that point. Resouces g
  
 
 # Assumptions & Trade-offs
-Nothing of note. 
+Nothing of note except for user interactions that led to index design. 
