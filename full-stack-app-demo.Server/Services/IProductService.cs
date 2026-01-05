@@ -1,5 +1,5 @@
+using full_stack_app_demo.Server.Controllers.Models.Requests;
 using full_stack_app_demo.Server.Data.DTO;
-using full_stack_app_demo.Server.Data.DTO.Requests;
 
 namespace full_stack_app_demo.Server.Services;
 
