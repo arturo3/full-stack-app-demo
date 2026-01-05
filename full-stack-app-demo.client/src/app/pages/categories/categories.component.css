@@ -1,0 +1,21 @@
+.page-card {
+    max-width: 720px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 28px 32px;
+    box-shadow: 0 24px 40px rgba(15, 23, 42, 0.08);
+    text-align: center;
+}
+
+.page-card h2 {
+    margin: 0 0 12px;
+    font-size: 1.75rem;
+    color: #0f172a;
+}
+
+.page-card p {
+    margin: 0;
+    color: #475569;
+    font-size: 1rem;
+}

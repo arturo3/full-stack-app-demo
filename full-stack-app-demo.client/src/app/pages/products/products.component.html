@@ -1,0 +1,37 @@
+<section class="page-card">
+  <h2>Products</h2>
+  <p>Manage your active product catalog here.</p>
+
+  <button class="load-button" mat-button color="primary" type="button" (click)="loadProducts()">
+    Load Products
+  </button>
+
+  <h1 class="state-title" *ngIf="!hasLoaded">No Products Loaded</h1>
+  <p class="state-message" *ngIf="isLoading">Loading...</p>
+  <p class="state-error" *ngIf="hasError">something went wrong while loading products...</p>
+
+  <table mat-table [dataSource]="products" class="products-table" *ngIf="hasLoaded && !isLoading && !hasError">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let product">{{ product.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef>Category</th>
+      <td mat-cell *matCellDef="let product">{{ product.category?.name || 'Unassigned' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let product">{{ product.price | currency }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="stock">
+      <th mat-header-cell *matHeaderCellDef>Stock</th>
+      <td mat-cell *matCellDef="let product">{{ product.stockQuantity }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</section>
