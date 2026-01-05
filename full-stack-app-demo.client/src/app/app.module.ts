@@ -11,6 +11,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { ProductsTwoComponent } from './pages/products-two/products-two.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ProductsComponent } from './pages/products/products.component';
     HeaderComponent,
     NavigationComponent,
     ProductsComponent,
+    ProductsTwoComponent,
     CategoriesComponent
   ],
   imports: [

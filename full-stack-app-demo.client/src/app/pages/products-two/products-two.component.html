@@ -1,0 +1,21 @@
+<section class="page-card">
+  <h2>Products With ngFor</h2>
+  <p>Manage your active product catalog here.</p>
+
+  <button class="load-button" mat-button color="primary" type="button" (click)="loadProducts()">
+    Load Products
+  </button>
+
+  <h1 class="state-title" *ngIf="!hasLoaded">No Products Loaded</h1>
+  <p class="state-message" *ngIf="isLoading">Loading...</p>
+  <p class="state-error" *ngIf="hasError">something went wrong while loading products...</p>
+
+  <div class="products-grid" *ngIf="hasLoaded && !isLoading && !hasError">
+    <div class="product-card" *ngFor="let product of products">
+      <h3>{{ product.name }}</h3>
+      <p class="product-detail">Category: {{ product.category?.name || 'Unassigned' }}</p>
+      <p class="product-detail">Price: {{ product.price | currency }}</p>
+      <p class="product-detail">Stock: {{ product.stockQuantity }}</p>
+    </div>
+  </div>
+</section>

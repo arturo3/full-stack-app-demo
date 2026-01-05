@@ -8,7 +8,9 @@ builder.Services.AddControllers();
 
 #region Entity Framework/Data Layer Configuration
 builder.Services.AddDbContext<full_stack_app_demo.Server.Data.AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+        .EnableDetailedErrors()
+        .EnableSensitiveDataLogging());
 
 builder.Services.AddScoped<full_stack_app_demo.Server.Data.Repositories.ICategoryRepository, full_stack_app_demo.Server.Data.Repositories.CategoryRepository>();
 builder.Services.AddScoped<full_stack_app_demo.Server.Data.Repositories.IProductRepository, full_stack_app_demo.Server.Data.Repositories.ProductRepository>();
